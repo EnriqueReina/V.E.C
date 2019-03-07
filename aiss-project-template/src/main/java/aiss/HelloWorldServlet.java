@@ -18,6 +18,10 @@ public class HelloWorldServlet extends HttpServlet {
 		log.log(Level.FINE, "Processing GET request");
 		 
 		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello world!");
+		resp.getWriter().println("Proyecto V.E.C");
+		resp.getWriter().println("Integrantes: \n");
+		resp.getWriter().println("Victor Muñoz Ramírez (vicmunoz)");
+		resp.getWriter().println("Carlos Pardo Pastor (carparpas)");
+		resp.getWriter().println("Enrique Reina Gutiérrez (enrreigut)");
 	}
 }
