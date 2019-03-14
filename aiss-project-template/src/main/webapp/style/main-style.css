@@ -1,45 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Permanent+Marker|Staatliches|Berkshire+Swash|Abel');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Permanent+Marker|Staatliches|Berkshire+Swash|Abel|Roboto+Condensed|BenchNine');
 
+html
+{
+	scroll-behavior: smooth;
+}
 .image
 {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	background-image: url(../images/wp3.jpg);
 	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 	background-attachment: fixed;
+	overflow: hidden;
+	background-repeat: no-repeat;
 	z-index: -10000;
 }
 
 .title-cont
 {
 	position: relative;
-	top: 45vh;	
+	top: 35vh;	
 }
 .title
 {
+	width: 60%;
+	color: white;
+	background-color: #f06;
+	mix-blend-mode: multiply;
 	font-weight: lighter;
-	font-family: 'Permanent Marker', cursive;
-	font-size: 3em;
+	font-family: 'Roboto Condensed', cursive;
+	font-size: 4em;
 }
 
+.centrar
+{
+	position: relative;
+	top:5vh;
+}
 .m_s
 {
 	width: 100%;
 	min-height: 100vh;
 	background-image: url(../images/wp2.jpg);
 	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 	background-attachment: fixed;
+	overflow: hidden;
+	background-repeat: no-repeat;
 	z-index: -10000;
 }
 
 .title2
 {
-	font-weight: lighter;
-	font-family: 'Permanent Marker',cursive;
+	font-weight: lighter;	
 	font-size: 3em;
 }
 
@@ -50,7 +62,7 @@
 	height: 350px;
 	background-repeat: no-repeat;
 	background-size: 135%;
-	background-position: center center;
+	background-position: center;
 	overflow: hidden;
 	-webkit-transition: background-size 0.4s;
 }
@@ -86,26 +98,60 @@
 
 #t1
 {
-	background-image: url(../images/perfil4.jpg);
+	background-image: url(../images/perfil5.jpg);
 }
 
 #t2
 {
-	background-image: url(../images/perfil2.jpg);
+	background-image: url(../images/perfil6.jpg);
 }
 
 #t3
 {
-	background-image: url(../images/perfil3.jpg);
+	background-image: url(../images/perfil7.jpg);
 }
 
 .p_s
 {
 	width: 100%;
 	min-height: 100vh;
-	background-image: url(../images/wp9.jpg);
+	background-image: url(../images/wp7.jpg);
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	z-index: -10000;
+}
+
+.info-project
+{
+	height: 50vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.a_s
+{
+	width: 100%;
+	min-height: 100vh;
+	background-image: url(../images/wp8.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	z-index: -10000;
+
+}
+.a_c
+{
+	position: relative;
+	top: 15vh;
+}
+
+.api:hover
+{
+	cursor: pointer;
+}
+
+a
+{
+	color: white !important;
 }

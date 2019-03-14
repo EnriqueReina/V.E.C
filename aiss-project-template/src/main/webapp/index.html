@@ -1,35 +1,58 @@
-<!DOCTYPE html> 
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 		<title>Proyecto AISS</title>
 		<link rel="stylesheet" type="text/css" href="style/main-style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script  src="//code.jquery.com/jquery-3.3.1.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
 
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <a href="#" class="navbar-left" style=" width:70px;"><img src="images/logo.png" width="80%"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link text-white" href="#move">Home<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link text-white" href="#move2">Miembros</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link text-white" href="#move3">Información</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link text-white" href="#move4">API usadas</a>
+	      </li>	   
+	  </div>
+	</nav>
+
 	<body>
-		<div class="image">
+		<div class="image" id="move">
 			<div class="carousel-item active">
 				<div class="container title-section">
 					<div class="row title-cont">
-						<div class="col-md-12 mx-auto text-white ">
-							<p class="text-uppercase text-center my-1 title">[ proyecto v.e.c ]</p>
+						<div class="col-md-12 mx-auto">
+							<p class="mx-auto text-uppercase text-center my-1 title" id="moveT">[ p r o y e c t o v.e.c ]</p>
 						</div>
 					</div>
 				</div>
 			</div>						
 		</div>
 
-		<section class="m_s">
-			<div class="container">
-				<p class="text-uppercase text-center text-white py-5 title2">MIEMBROS</p>				
-
+		<section class="m_s text-white" id="move2">
+			<div class="container centrar py-5">
+				<p class="text-uppercase text-center py-3 title2 h1">MIEMBROS</p>				
+				<p class="text-center py-3">Estudiantes de Ingeniería Infórmatica: Ingeniería del Software</p>
+				<p class="text-center">Grupo 4</p>
 				<div class="row">
-					<div class="col-md-10 col-md-offset-1 mx-auto px-5 my-5">
+					<div class="col-md-10 col-md-offset-1 mx-auto py-2 my-2" id="moveT2">
 						<div class="row ">
 
 							<div class="tarjeta col-lg-3 col-md-3 col-sm-4 col-xs-12 px-0" id="t1">
@@ -37,7 +60,7 @@
 									<div class="info-tarjeta">
 										<p>Carlos Pardos Pastor</p>					
 										<p>carparpas</p>
-										<p>carparpas@gmail.com</p>
+										<p>carlosk1llj0yp@gmail.com</p>
 									</div>
 								</div>
 							</div>
@@ -47,7 +70,7 @@
 									<div class="info-tarjeta">
 										<p>Victor Muñoz Ramírez</p>					
 										<p>vicmunram</p>
-										<p>vicmunram@gmail.com</p>
+										<p>munozrzvictor@gmail.com</p>
 									</div>
 								</div>
 							</div>
@@ -57,7 +80,7 @@
 									<div class="info-tarjeta">
 										<p>Enrique Reina Gutiérrez</p>					
 										<p>enrreigut</p>
-										<p>enrreigut@gmail.com</p>
+										<p>enri.r99@gmail.com</p>
 									</div>
 								</div>
 							</div>
@@ -65,24 +88,93 @@
 						</div>
 					</div>
 
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mx-auto">
-						<p class="text-center text-white">Para más información, pasa el ratón por encima de las imágenes</p>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mx-auto py-5">
+						<p class="text-center">Para más información, pasa el ratón por encima de las imágenes</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="p_s">
-			<div class="container">
-				<p class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mx-auto text-center text-black title2">INFORMACIÓN</p>
+		<section class="p_s text-white py-5" id="move3">
+			<div class="container centrar">
+				<p class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mx-auto text-center title2 h1">INFORMACIÓN</p>
 
-				<div class="row">
-					
+				<div class="row pd-3">
+					<p class="h3 text-center mx-auto my-2">¿De qué va nuestro proyecto?</p>	
+				</div>
+
+				<div class="row py-5 info-project">
+					<div class="col-lg-8 col-md-8 col-sm-4 col-xs-4 mx-auto text-justify">
+						<p>
+							La gestión de proyectos y versiones es sin duda alguna una faceta clave en cualquier proceso de desarrollo de un proyecto.
+						</p>
+						<p>
+							Nosotros, pese a nuestra poca experiencia y a la dificultdad que supone vivir lejos unos de otros, nos hemos visto obligados a realizar esta tarea de manera remota, usando diferentes tipos de aplicaciones tanto de comunicación como de control de versiones.
+						</p>
+						<p>
+							Esto nos hizo darnos cuenta de que no existía ninguna herramienta que aunara ambas facetas mencionadas, las cuales consideramos las más importantes a fin de realizar un proyecto con éxito.
+						</p>
+						<p>
+							Por tanto, queremos desarrollar una aplicación que facilite esta actividad. Para ello integraríamos varias APIs que nos ofrecieran la posibilidad de crear proyectos pudiendo establecer fechas y añadir eventos, compartir documentos y código y mantener una comunicación verbal constante.
+						</p>
+					</div>
 				</div>
 				
 			</div>
+		</section>
+
+		<section class="a_s text-white py-5" id="move4">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mx-auto py-5">
+						<p class="text-uppercase text-center py-3 title2 h1">APIS USADAS</p>
+					</div>
+				</div>
+
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 mx-auto">
+					<p class="text-center">Haz click en los nombres para ser redireccionado a la documentación.</p>
+				</div>
+
+				<div class="row">					
+					<div class="col-lg-12 mx-auto">	
+						<div class="row text-center a_c">
+							<div class="col">
+								<img class="api img-fluid" src="images/GitHub-Mark-Light-64px.png" width="64px">
+								<br>
+								<a href="https://developer.github.com/v3/">GitHUB</a>
+							</div>
+							<div class="col">
+								<img class="img-fluid api" src="images/discord.svg" width="64px">
+								<br>
+								<a href="https://discordapp.com/developers/docs/intro">Discord</a>
+							</div>
+							<div class="col">
+								<img class="api img-fluid" src="images/gdrive5.png" width="64px">
+								<br>
+								<a href="https://developers.google.com/drive/api/v3/about-sdk?hl=es-419">Google Drive</a>
+							</div>
+							<div class="col">
+								<img class="api img-fluid" src="images/icons8-google-calendar-48.png" width="64px">
+								<br>
+								<a href="https://developers.google.com/calendar/v3/reference/">Google Calendar</a>
+							</div>
+							<div class="col">
+								<img class="api img-fluid" src="images/gdoc.png" width="64px">
+								<br>
+								<a href="https://developers.google.com/docs/api/reference/rest/">Google DOCS</a>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
 		</section>	
 
+		<footer class="page-footer font-small bg-dark">
+			<div class="footer-copyright text-center py-3 text-white">©2019 Copyright:
+		    	<a href="https://aiss-vec.appspot.com">aiss-vec.appspot.com</a>
+		  	</div>
+		</footer>
+	
 		<!--<a href="helloworld">Proyecto V.E.C</a></td>-->	
 	</body>
 </html>
