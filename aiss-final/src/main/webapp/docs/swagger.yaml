@@ -1,0 +1,805 @@
+swagger: '2.0'
+info:
+  description: Documentation for the VEC API
+  version: 1.0.0
+  title: VEC API
+  # put the contact info for your development or API team
+  contact:
+    email: aiss.proyecto.vec@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Projects
+  description: Project calls
+- name: Collaborators
+  description: Collaborator calls
+- name: Events
+  description: Event calls
+- name: Files
+  description: File calls
+- name: Messages
+  description: Message calls
+
+paths:
+#PROJECTS
+  /projects:
+    get:
+      tags:
+      - Projects
+      summary: Searches available projects
+      operationId: getAllProjects
+      description: You can get all available projects in the VEC APP
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Available projects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Project'
+    post:
+      tags:
+      - Projects
+      summary: Adds a project
+      operationId: addProject
+      description: Adds a project to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: project
+        description: Project to add
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              example: Proyecto 1
+            owner:
+              $ref: '#/definitions/Collaborator'
+      responses:
+        201:
+          description: Project created
+        400:
+          description: Invalid input, object invalid
+    put:
+      tags:
+      - Projects
+      summary: Updates a project
+      operationId: updateProject
+      description: Update a project in the system
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: project
+        description: Project to update
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              example: p1
+            title:
+              type: string
+              example: Proyecto 1
+      responses:
+        204:
+          description: Project updated
+        400:
+          description: Invalid input, object invalid
+        404:
+          description: Project not found
+          
+  /projects/{projectId}:
+    get:
+      tags:
+      - Projects
+      summary: Search project by ID
+      operationId: getProject
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project to return
+        required: true
+        type: string
+      description: Get the project with ID equals to projectId
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Project found
+          schema:
+             $ref: '#/definitions/Project'
+        404:
+          description: Project not found
+    delete:
+      tags:
+      - Projects
+      summary: Delete project by ID
+      operationId: removeProject
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project to be removed
+        required: true
+        type: string
+      description: Remove the project with ID equals to projectId
+      responses:
+        204:
+          description: Project deleted
+        404:
+          description: Project not found
+          
+  /projects/{projectId}/{collaboratorId}:
+    post:
+      tags:
+      - Collaborators
+      summary: Adds a collaborator to a project
+      operationId: addCollaboratorToProject
+      description: Adds a collaborator to an existing project
+      consumes:
+      - text/plain
+      produces:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project to add the collaborator
+        required: true
+        type: string
+      - name: collaboratorId
+        in: path
+        description: ID of collaborator
+        required: true
+        type: string
+      responses:
+        201:
+          description: Collaborator added to project
+        400:
+          description: Collaborator is already in the project
+        404:
+          description: Project or collaborator not found
+    delete:
+      tags:
+      - Collaborators
+      summary: Delete collaborator from project
+      operationId: removeCollaboratorFromProject
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which the collaborator is removed from
+        required: true
+        type: string
+      - name: collaboratorId
+        in: path
+        description: ID of collaborator
+        required: true
+        type: string
+      description: Remove the collaborator with ID equals to collaboratorId from project with ID equals to projectId
+      responses:
+        204:
+          description: Project deleted
+        404:
+          description: Project not found     
+          
+#COLLABORATORS
+  /collaborators:
+    get:
+      tags:
+      - Collaborators
+      summary: Searches available collaborators
+      operationId: getAllCollaborators
+      description: You can get all available collaborators in the VEC APP
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Available collaborators
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Collaborator'
+    post:
+      tags:
+      - Collaborators
+      summary: Adds a collaborator
+      operationId: addCollaborator
+      description: Adds a collaborator to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: collaborator
+        description: Collaborator to add
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Martin
+            surname:
+              type: string
+              example: Prince
+            email:
+              type: string
+              example: marpri@gmail.com
+      responses:
+        201:
+          description: Collaborator created
+        400:
+          description: Invalid input, object invalid
+    put:
+      tags:
+      - Collaborators
+      summary: Updates a collaborator
+      operationId: updateCollaborator
+      description: Update a collaborator from the system
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: collaborator
+        description: Collaborator to update
+        schema:
+          $ref: "#/definitions/Collaborator"
+      responses:
+        204:
+          description: Collaborator updated
+        404:
+          description: Project not found
+          
+  /collaborators/{collaboratorId}:
+    get:
+      tags:
+      - Collaborators
+      summary: Search collaborator by ID
+      operationId: getCollaborator
+      parameters:
+      - name: collaboratorId
+        in: path
+        description: ID of collaborator to return
+        required: true
+        type: string
+      description: Get the collaborator with ID equals to collaboratorId
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Collaborator found
+          schema:
+             $ref: '#/definitions/Collaborator'
+        404:
+          description: Collaborator not found
+    delete:
+      tags:
+      - Collaborators
+      summary: Delete collaborator by ID
+      operationId: removeCollaborator
+      parameters:
+      - name: collaboratorId
+        in: path
+        description: ID of collaborator to be removed
+        required: true
+        type: string
+      description: Remove the collaborator with ID equals to collaboratorId
+      responses:
+        204:
+          description: Collaborator deleted
+        404:
+          description: Collaborator not found
+          
+#EVENTS
+  /projects/{projectId}/events:
+    get:
+      tags:
+      - Events
+      summary: Searches events of a project
+      operationId: getAllEvents
+      description: Get all the events of a project
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the events
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Project events
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+        404:
+          description: Project not found
+    post:
+      tags:
+      - Events
+      summary: Adds a event to a project
+      operationId: addEvent
+      description: Adds an event to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: projectId
+        description: ID of project where you add the event
+        required: true
+        type: string
+      - in: body
+        name: event
+        description: Event to add
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              example: Meeting
+            description:
+              type: string
+              example: New project
+            date:
+              type: string
+              example: '2019-06-12'
+      responses:
+        201:
+          description: Event created
+        400:
+          description: Invalid input, object invalid
+        404:
+          description: Project not found
+    put:
+      tags:
+      - Events
+      summary: Updates an event
+      operationId: updateEvent
+      description: Update an event from the system
+      consumes:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the event
+        required: true
+        type: string
+      - in: body
+        name: event
+        description: Event to update
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        204:
+          description: Event updated
+        404:
+          description: Project or event not found
+          
+  /projects/{projectId}/events/{eventId}:
+    get:
+      tags:
+      - Events
+      summary: Search event by ID
+      operationId: getEvent
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the event
+        required: true
+        type: string
+      - name: eventId
+        in: path
+        description: ID of event to return
+        required: true
+        type: string
+      description: Get the event with ID equals to eventId
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Event found
+          schema:
+             $ref: '#/definitions/Event'
+        404:
+          description: Project or event not found
+    delete:
+      tags:
+      - Events
+      summary: Delete event by ID
+      operationId: removeEvent
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the event
+        required: true
+        type: string
+      - name: eventId
+        in: path
+        description: ID of event to be removed
+        required: true
+        type: string
+      description: Remove the event with ID equals to eventId
+      responses:
+        204:
+          description: Event deleted
+        404:
+          description: Project or event not found
+          
+#FILES
+  /projects/{projectId}/files:
+    get:
+      tags:
+      - Files
+      summary: Searches files of a project
+      operationId: getAllFiles
+      description: Get all the files of a project
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the files
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Project files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/File'
+        404:
+          description: Project not found
+    post:
+      tags:
+      - Files
+      summary: Adds a file to a project
+      operationId: addFile
+      description: Adds a file to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: projectId
+        description: ID of project where you add the file
+        required: true
+        type: string
+      - in: body
+        name: file
+        description: File to add
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              example: Building
+            type:
+              type: string
+              example: folder
+              description: It must be a value between 'folder' and 'doc' 
+            parent:
+              type: string
+              example: f1
+              description: Folder where the file is contained
+            content:
+              type: string
+              example: Information inside doc
+              description: Only if it's a doc
+      responses:
+        201:
+          description: File created
+        400:
+          description: Invalid input, object invalid
+        404:
+          description: Project not found
+    put:
+      tags:
+      - Files
+      summary: Updates a file
+      operationId: updateFile
+      description: Update a file from the system
+      consumes:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the file
+        required: true
+        type: string
+      - in: body
+        name: file
+        description: File to update
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              example: f1
+            title:
+              type: string
+              example: Building
+            parent:
+              type: string
+              example: f1
+              description: Folder where the file is contained
+            content:
+              type: string
+              example: Information inside doc
+              description: Only if it's a doc
+      responses:
+        204:
+          description: File updated
+        404:
+          description: Project or file not found
+          
+  /projects/{projectId}/files/{fileId}:
+    get:
+      tags:
+      - Files
+      summary: Search file by ID
+      operationId: getFile
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the file
+        required: true
+        type: string
+      - name: fileId
+        in: path
+        description: ID of file to return
+        required: true
+        type: string
+      description: Get the file with ID equals to fileId
+      produces:
+      - application/json
+      responses:
+        200:
+          description: File found
+          schema:
+             $ref: '#/definitions/File'
+        404:
+          description: Project or file not found
+    delete:
+      tags:
+      - Files
+      summary: Delete file by ID
+      operationId: removeFile
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the file
+        required: true
+        type: string
+      - name: fileId
+        in: path
+        description: ID of file to be removed
+        required: true
+        type: string
+      description: Remove the file with ID equals to fileId
+      responses:
+        204:
+          description: File deleted
+        404:
+          description: Project or file not found
+
+#MESSAGES
+  /projects/{projectId}/messages:
+    get:
+      tags:
+      - Messages
+      summary: Searches messages of a project
+      operationId: getAllMessages
+      description: Get all the messages of a project
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the messages
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Project messages
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Message'
+        404:
+          description: Project not found
+    post:
+      tags:
+      - Messages
+      summary: Adds a message to a project
+      operationId: addMessage
+      description: Adds a message to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: projectId
+        description: ID of project where you add the message
+        required: true
+        type: string
+      - in: body
+        name: message
+        description: Message to add
+        schema:
+          type: object
+          properties:
+            collaboratorId:
+              type: string
+              example: c1
+              description: Collaborator who sent the message
+            content:
+              type: string
+              example: Good morning
+      responses:
+        201:
+          description: Message created
+        400:
+          description: Invalid input, object invalid
+        404:
+          description: Project not found
+          
+  /projects/{projectId}/messages/{messageId}:
+    get:
+      tags:
+      - Messages
+      summary: Search message by ID
+      operationId: getMessage
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of project which contains the message
+        required: true
+        type: string
+      - name: messageId
+        in: path
+        description: ID of message to return
+        required: true
+        type: string
+      description: Get the message with ID equals to messageId
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Message found
+          schema:
+             $ref: '#/definitions/Message'
+        404:
+          description: Project or message not found
+definitions:
+  Project:
+    type: object
+    required:
+    - title
+    - owner
+    properties:
+      id:
+        type: string
+        example: p1
+      title:
+        type: string
+        example: Proyecto 1
+      owner:
+        $ref: '#/definitions/Collaborator'
+      collaborators:
+        type: array
+        items:
+          $ref: '#/definitions/Collaborator'
+      files:
+        type: array
+        items:
+          $ref: '#/definitions/File'
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/Message'
+      events:
+        type: array
+        items:
+          $ref: '#/definitions/Event'
+        
+  Collaborator:
+    type: object
+    required:
+    - email
+    properties:
+      id:
+        type: string
+        example: c1
+      name:
+        type: string
+        example: Martin
+      surname:
+        type: string
+        example: Prince
+      email:
+        type: string
+        example: marpri@gmail.com
+  Message:
+    type: object
+    required:
+    - collaboratorId
+    - content
+    properties:
+      id:
+        type: string
+        example: m1
+      collaboratorId:
+        type: string
+        example: c1
+        description: Collaborator who sent the message
+      content:
+        type: string
+        example: Good morning
+      time:
+        type: string
+        example: '2019-06-12T15:30:20.388'
+  Event:
+    type: object
+    required:
+    - title
+    - date
+    properties:
+      id:
+        type: string
+        example: e1
+      title:
+        type: string
+        example: Meeting
+      description:
+        type: string
+        example: New project
+      date:
+        type: string
+        example: '2019-06-12'
+  File:
+    type: object
+    required:
+    - title
+    - type
+    properties:
+      id:
+        type: string
+        example: f1
+      title:
+        type: string
+        example: Building
+      type:
+        type: string
+        example: folder
+        description: It must be a value between 'folder' and 'doc' 
+      parent:
+        type: string
+        example: f1
+        description: Folder where the file is contained
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/File'
+        description: Only if it's a folder
+      content:
+        type: string
+        example: Information inside doc
+        description: Only if it's a doc
+host: aiss-vec.appspot.com
+basePath: /api
+schemes:
+ - https

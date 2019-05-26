@@ -1,0 +1,30 @@
+{
+	"GoogleDrive": {
+		"tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+		"clientId": "623471640551-l8dpglcugo3p110g6cn3rilfulc8s04k.apps.googleusercontent.com",
+		"clientSecret": "RqEkYdbvtsc8Am8kEgDqe7Tw",
+		"authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes": ["https://www.googleapis.com/auth/drive"]
+	},
+	"GoogleDoc": {
+		"tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+		"clientId": "623471640551-l8dpglcugo3p110g6cn3rilfulc8s04k.apps.googleusercontent.com",
+		"clientSecret": "RqEkYdbvtsc8Am8kEgDqe7Tw",
+		"authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes": ["https://www.googleapis.com/auth/documents.readonly"]
+	},
+	"GoogleCalendar": { 
+        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+        "clientId": "623471640551-l8dpglcugo3p110g6cn3rilfulc8s04k.apps.googleusercontent.com",
+		"clientSecret": "RqEkYdbvtsc8Am8kEgDqe7Tw",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/calendar","https://www.googleapis.com/auth/calendar.events"]
+    },
+     "Bitbucket": { 
+        "tokenUrl": "https://bitbucket.org/site/oauth2/access_token",
+        "clientId": "yr2HbXUDGnGxwSFKbz",
+        "clientSecret": "nWaXfk8ZMe5hRB6nV4p4rrjGG26Bc9Bh",
+        "authorizationFormUrl": "https://bitbucket.org/site/oauth2/authorize",
+        "scopes": ["repository","account"]
+    }
+}

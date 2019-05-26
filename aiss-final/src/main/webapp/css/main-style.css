@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.GoogleDriveCont
+{
+    margin: 15px;
+    height: 500px;
+    background-color:rgba(0,0,0,0.4);
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+
+.anyade-user:hover
+{
+	cursor:pointer;
+	text-decoration: underline;
+}
+
+#colab-cont
+{
+	background-color: red;
+}
+
+.projCont ul
+{
+    display:none;
+}
+
+ul
+{
+    list-style: none;
+}
+
+.GoogleDriveCont ul:nth-child(n)
+{
+    margin-left: 25px;
+}
+
+#root
+{
+    background-color: fuchsia;
+}
+
+.dropdown
+{
+    background-color: red;
+    color: white;
+}
+
+
+#button:active #carpeta ul
+{
+    display: block;
+
+}
+
+.butt
+{
+    margin-top: 15px;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.15rem;
+}
+
+.hover_link:hover
+{
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+.butt2
+{
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 0.95rem;
+}
+
+#button:active
+{
+    background-color: blue;
+}
+
+a
+{
+    color: white;
+}
+
+#carpeta ul
+{
+    display: none;
+    margin-bottom: 10px;
+}
+
+#carpeta
+{
+    padding-left:2rem;
+}
+
+#archivo
+{
+    padding-left:2rem;
+    font-size: 0.8rem;
+}
+
+.action
+{
+	font-size: 0.8rem;
+	color: white;
+	opacity: 0.4;
+}
+
+.action:hover
+{
+	opacity: 1;
+	cursor: pointer;
+}
+
+.addUser-but:hover
+{
+	color: #f1c40f;
+}
+.edit-but:hover
+{	
+	color: #0984e3;
+}
+
+.erase-but:hover
+{
+	color: #d63031;
+}
+
+.donwload-but:hover
+{
+	color: #ef5777;
+}
+
+.plus-but:hover
+{
+	color: #78e08f;
+}
+
+.cross
+{
+	-webkit-transition:0.4s;	
+}
+
+.cross:hover
+{
+	cursor: pointer;
+	color:  #d63031;
+	transform: rotate(360deg);
+}
+
+.myInp
+{
+	margin-left: 15px;
+	width: 200px;	
+	background-color: rgba(0,0,0,0);
+	border-radius: 0px;
+	border-bottom: 2px solid;
+	color: white;
+	outline:none;
+}
+
+.mySelect
+{
+	font-size: 1.1rem;
+	height:45px;
+	background-color: rgba(255,255,255,0.1);
+	color: white;
+	outline: none;
+	border: none;
+}
+
+.mySelect option
+{
+	font-size: 1.1rem;
+	height:45px;
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	outline: none;
+	border: none;
+}
+
+.sec
+{
+	width: 50%;
+	height: 50vh;
+}
+
+.sec-menu
+{
+	position: fixed;
+	padding: 15px;
+	height: 100vh;
+	width: 35px;
+	overflow-x: hidden;
+	-webkit-transition: width, 0.4s;
+}
+
+.sec-menu:hover
+{
+	width: 280px;
+}
+
